@@ -4,21 +4,21 @@ Configuration to use haproxy with a MapR cluster HA
 
 You have to create a name in your DNS or hosts file 
 
-*PRODUCTION CLUSTER
-10.68.7.91  ip-10-68-7-91		node1
-10.68.7.92  ip-10-68-7-92   	node2
-10.68.7.93  ip-10-68-7-93    	node3
-10.68.7.94  ip-10-68-7-94    	node4
-10.68.7.95  ip-10-68-7-95    	node5
-
-*LOAD BALANCER / VPN / PROXY
-10.68.7.31  ip-10-68-7-31    	node0
-10.68.7.31  my.mapr01.fr		prod1
-
-*CLIENTS INSTANCES
-10.68.7.240 ip-10-68-7-240      ora1
-10.68.7.250 ip-10-68-7-250      client1
-10.68.7.158 ip-10-68-7-158      win01
+    *PRODUCTION CLUSTER
+        10.68.7.91  ip-10-68-7-91		node1
+        10.68.7.92  ip-10-68-7-92   	node2
+        10.68.7.93  ip-10-68-7-93    	node3
+        10.68.7.94  ip-10-68-7-94    	node4
+        10.68.7.95  ip-10-68-7-95    	node5
+        
+    *LOAD BALANCER / VPN / PROXY
+        10.68.7.31  ip-10-68-7-31    	node0
+        10.68.7.31  my.mapr01.fr		prod1
+        
+    *CLIENTS INSTANCES
+        10.68.7.240 ip-10-68-7-240      ora1
+        10.68.7.250 ip-10-68-7-250      client1
+        10.68.7.158 ip-10-68-7-158      win01
 
 You can now use the cluster my.mapr01.fr in you differen configuration files in the MapR Cluster.
 Don't forget to replicate your configurations files in the different nodes running the sames services.
@@ -28,20 +28,17 @@ To configure Hue you have to update this file : /opt/mapr/hue/hue-3.9.0/desktop/
 
 Sections where host must be updated : 
 
-[[database]]
-    engine=mysql
-    ######## host=ip-10-68-7-91
-    host=my.mapr01.fr
-    port=3306
-    
-    
-
-
-[hadoop]
-  [[hdfs_clusters]]
-    [[[default]]]
-      ######## webhdfs_url=http://ip-10-68-7-91:14000/webhdfs/v1
-      webhdfs_url=http://my.mapr01.fr:14000/webhdfs/v1
+    [[database]]
+        engine=mysql
+        ######## host=ip-10-68-7-91
+        host=my.mapr01.fr
+        port=3306
+.
+    [hadoop]
+        [[hdfs_clusters]]
+            [[[default]]]
+                ######## webhdfs_url=http://ip-10-68-7-91:14000/webhdfs/v1
+                webhdfs_url=http://my.mapr01.fr:14000/webhdfs/v1
 
 
 
@@ -56,31 +53,31 @@ Sections where host must be updated :
             submit_to=True
             security_enabled=${security_enabled}
             mechanism=${mechanism}
-
+.
       # URL of the HistoryServer API
       ######### history_server_api_url=http://ip-10-68-7-91:19888
       history_server_api_url=http://my.mapr01.fr:19888
-
+.
     [liboozie]
         # The URL where the Oozie service runs on. This is required in order for
         # users to submit jobs.
         ######## oozie_url=http://ip-10-68-7-91:11000/oozie
         oozie_url=http://my.mapr01.fr:11000/oozie
-
+.
     [beeswax]
         ######## hive_server_host=ip-10-68-7-91
         hive_server_host=my.mapr01.fr
-
+.
     [sqoop]
         # For autocompletion, fill out the librdbms section.
         # Sqoop server URL
         ######## server_url=http://ip-10-68-7-91:12000/sqoop
         server_url=http://my.mapr01.fr:12000/sqoop
-
+.
     [hbase]
         ######## hbase_clusters=(Cluster|ip-10-68-7-91:9090)
         hbase_clusters=(Cluster|my.mapr01.fr:9090)
-
+.
     [spark]
         # Host address of the Livy Server.
         ######## livy_server_host=ip-10-68-7-91
