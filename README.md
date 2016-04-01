@@ -52,10 +52,9 @@ For the Yarn Cluster section we don't need to manage HA of the 3 RM in the clust
             security_enabled=${security_enabled}
             mechanism=${mechanism}
 
-
-      # URL of the HistoryServer API
-      ######### history_server_api_url=http://ip-10-68-7-91:19888
-      history_server_api_url=http://my.mapr01.fr:19888
+             # URL of the HistoryServer API
+            ######### history_server_api_url=http://ip-10-68-7-91:19888
+            history_server_api_url=http://my.mapr01.fr:19888
 
 
     [liboozie]
