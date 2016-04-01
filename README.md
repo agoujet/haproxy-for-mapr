@@ -106,10 +106,10 @@ How to configure 2 servers in a Master/Master configuration. In the HAProxy conf
 
 Configuration to made in the two servers : 
 
-            First MySQL Server (default) | Second MySQL Server (backup)
-            ------------ | -------------
-            /etc/my.cnf :       | /etc/my.cnf :
-                    | Content in the second colum
+First MySQL Server (default) :
+
+/etc/my.cnf :
+
             [mysqld]   |
             datadir=/var/lib/mysql   |
             socket=/var/lib/mysql/mysql.sock   |
@@ -127,6 +127,7 @@ Configuration to made in the two servers :
             log-error=/var/log/mysqld.log   |
             pid-file=/var/run/mysqld/mysqld.pid   |
 
+Second MySQL Server (backup)
 
 
 Refs used : 
