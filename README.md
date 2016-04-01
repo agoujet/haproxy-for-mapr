@@ -3,7 +3,7 @@
 
 
 ## Hostname / DNS / hosts file 
-You have to create a name in your DNS or hosts file 
+You have to create a name in your DNS or hosts file.
 
     # PRODUCTION CLUSTER
         10.68.7.91  ip-10-68-7-91		node1
@@ -20,6 +20,15 @@ You have to create a name in your DNS or hosts file
 You can now use the cluster my.mapr01.fr in you differen configuration files in the MapR Cluster.
 Don't forget to replicate your configurations files in the different nodes running the sames services.
 We can use cluster shell to replicate files in the cluster. 
+
+-----------------------------
+## Hive Configuration 
+
+ <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://my.mapr01.fr:3306/hive?createDatabaseIfNotExist=true</value>
+    <description>JDBC connect string for a JDBC metastore</description>
+</property>
 
 -----------------------------
 ## HUE Configuration 
@@ -93,14 +102,31 @@ For the Yarn Cluster section we don't need to manage HA of the 3 RM in the clust
 
 ## MYSQL MASTER/MASTER Configuration 
 
-How to configure 2 servers in a Master/Master configuration. In the HAProxy config file 
+How to configure 2 servers in a Master/Master configuration. In the HAProxy config file we define the second server as "backup" to avoid any issues between different tools using the HCat. So the first server is the default server and the second server that is also a master is only used by HAProxy when the first one is really unvailable. 
 
+Configuration to made in the two servers : 
 
-First MySQL Server (default) | Second MySQL Server (backup)
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+            First MySQL Server (default) | Second MySQL Server (backup)
+            ------------ | -------------
+            /etc/my.cnf :       | /etc/my.cnf :
+                    | Content in the second column
 
+            [mysqld]   |
+            datadir=/var/lib/mysql   |
+            socket=/var/lib/mysql/mysql.sock   |
+            user=mysql   |
+            # Disabling symbolic-links is recommended to prevent assorted security risks   |
+            symbolic-links=0   |
+            server-id=1   | 
+            log_bin=/var/log/mysql/mysql-bin.log    |
+            binlog_do_db=hive  |
+            binlog_do_db=hue   |
+            binlog_do_db=oozie   |
+            binlog_format=row   |
+            
+            [mysqld_safe]   |
+            log-error=/var/log/mysqld.log   |
+            pid-file=/var/run/mysqld/mysqld.pid   |
 
 
 
