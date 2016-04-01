@@ -48,7 +48,7 @@ You can distribute this file to nodes that will have hive installed using cluste
         clush: node3: exited with exit code 1
         clush: node5: exited with exit code 1
 
-Node 3 to 5 don't have hive installed so cannot copy this file in this hive conf directory, no worry. :wink:
+Nodes 3 to 5 don't have hive installed so cannot copy this file in this hive conf directory, no worry. :wink:
 
 -----------------------------
 ## HUE Configuration 
@@ -117,6 +117,20 @@ For the Yarn Cluster section we don't need to manage HA of the 3 RM in the clust
         # Host address of the Livy Server.
         ######## livy_server_host=ip-10-68-7-91
         livy_server_host=my.mapr01.fr
+
+
+Like for hive you can also distribute this file to nodes that will have hive installed using clustershell :
+
+            [root@ip-10-68-7-91 ~]# clush -a --copy /opt/mapr/hue/hue-3.9.0/desktop/conf/hue.ini
+            node5: scp: /opt/mapr/hue/hue-3.9.0/desktop/conf/: No such file or directory
+            node4: scp: /opt/mapr/hue/hue-3.9.0/desktop/conf/: No such file or directory
+            clush: node5: exited with exit code 1
+            node3: scp: /opt/mapr/hue/hue-3.9.0/desktop/conf/: No such file or directory
+            clush: node4: exited with exit code 1
+            clush: node3: exited with exit code 1
+            [root@ip-10-68-7-91 ~]#
+
+Nodes 3 to 5 don't have hive installed so cannot copy this file in this hive conf directory, no worry. :wink:
 
 -----------------------------
 
