@@ -13,7 +13,7 @@ You have to create a name in your DNS or hosts file
         
     # LOAD BALANCER / VPN / PROXY
         10.68.7.31  ip-10-68-7-31    	node0
-        10.68.7.31  my.mapr01.fr		   prod1
+        10.68.7.31  my.mapr01.fr		prod1
         
 
 You can now use the cluster my.mapr01.fr in you differen configuration files in the MapR Cluster.
