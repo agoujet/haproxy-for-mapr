@@ -1,7 +1,6 @@
 # How to use haproxy with a MapR cluster HA and a MySQL MASTER/MASTER configuration
 
------------------------------
------------------------------
+
 ## Hostname / DNS / hosts file 
 You have to create a name in your DNS or hosts file 
 
@@ -43,7 +42,8 @@ Sections where host must be updated :
 
 :warning:
 For the Yarn Cluster section we don't need to manage HA of the 3 RM in the cluster. MapR already manage the failover with Zookeeper. We have to mention the virtual name for the History Server 
-:warning:
+
+
 
     [[yarn_clusters]]
         [[[default]]]
