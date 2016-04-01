@@ -47,51 +47,44 @@ Sections where host must be updated :
 
 #### For the Yarn Cluster section we don't need to manage HA of the 3 RM in the cluster. MapR already 
 #### manage the failover with Zookeeper. We have to mention the virtual name for the History Server 
- 
-  [[yarn_clusters]]
-    [[[default]]]
-      # Enter the host on which you are running the ResourceManager
-      #resourcemanager_host=ip-10-68-7-29
 
-      resourcemanager_port=8032
-      submit_to=True
-      security_enabled=${security_enabled}
-      mechanism=${mechanism}
+    [[yarn_clusters]]
+        [[[default]]]
+            # Enter the host on which you are running the ResourceManager
+            #resourcemanager_host=ip-10-68-7-29
+            resourcemanager_port=8032
+            submit_to=True
+            security_enabled=${security_enabled}
+            mechanism=${mechanism}
 
       # URL of the HistoryServer API
       ######### history_server_api_url=http://ip-10-68-7-91:19888
       history_server_api_url=http://my.mapr01.fr:19888
 
-
-
-
-[liboozie]
-  # The URL where the Oozie service runs on. This is required in order for
-  # users to submit jobs.
-  ######## oozie_url=http://ip-10-68-7-91:11000/oozie
-  oozie_url=http://my.mapr01.fr:11000/oozie
-
+    [liboozie]
+        # The URL where the Oozie service runs on. This is required in order for
+        # users to submit jobs.
+        ######## oozie_url=http://ip-10-68-7-91:11000/oozie
+        oozie_url=http://my.mapr01.fr:11000/oozie
 
     [beeswax]
-    ######## hive_server_host=ip-10-68-7-91
-    hive_server_host=my.mapr01.fr
+        ######## hive_server_host=ip-10-68-7-91
+        hive_server_host=my.mapr01.fr
 
     [sqoop]
-      # For autocompletion, fill out the librdbms section.
-    # Sqoop server URL
-    ######## server_url=http://ip-10-68-7-91:12000/sqoop
-    server_url=http://my.mapr01.fr:12000/sqoop
+        # For autocompletion, fill out the librdbms section.
+        # Sqoop server URL
+        ######## server_url=http://ip-10-68-7-91:12000/sqoop
+        server_url=http://my.mapr01.fr:12000/sqoop
 
     [hbase]
-    ######## hbase_clusters=(Cluster|ip-10-68-7-91:9090)
-    hbase_clusters=(Cluster|my.mapr01.fr:9090)
-
+        ######## hbase_clusters=(Cluster|ip-10-68-7-91:9090)
+        hbase_clusters=(Cluster|my.mapr01.fr:9090)
 
     [spark]
-     # Host address of the Livy Server.
-     ######## livy_server_host=ip-10-68-7-91
-     livy_server_host=my.mapr01.fr
-
+        # Host address of the Livy Server.
+        ######## livy_server_host=ip-10-68-7-91
+        livy_server_host=my.mapr01.fr
 
 -----------------------------
 
