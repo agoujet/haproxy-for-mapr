@@ -25,6 +25,7 @@ We can use cluster shell to replicate files in the cluster.
 ## Hive Configuration 
 
 You can find bellow the 2 section the /opt/mapr/hive/hive-1.2/conf/hive-site.xml that you have to update.
+
          <property>
             <name>javax.jdo.option.ConnectionURL</name>
             <value>jdbc:mysql://my.mapr01.fr:3306/hive?createDatabaseIfNotExist=true</value>
