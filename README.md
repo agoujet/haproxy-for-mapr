@@ -32,6 +32,7 @@ You can find bellow the 2 section the /opt/mapr/hive/hive-1.2/conf/hive-site.xml
             <description>JDBC connect string for a JDBC metastore</description>
         </property>
 ... 
+
          <property>
             <name>hive.metastore.uris</name>
             <value>thrift://my.mapr01.fr:9083</value>
