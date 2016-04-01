@@ -24,11 +24,32 @@ We can use cluster shell to replicate files in the cluster.
 -----------------------------
 ## Hive Configuration 
 
- <property>
-    <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:mysql://my.mapr01.fr:3306/hive?createDatabaseIfNotExist=true</value>
-    <description>JDBC connect string for a JDBC metastore</description>
-</property>
+You can find bellow the 2 section the /opt/mapr/hive/hive-1.2/conf/hive-site.xml that you have to update.
+
+         <property>
+            <name>javax.jdo.option.ConnectionURL</name>
+            <value>jdbc:mysql://my.mapr01.fr:3306/hive?createDatabaseIfNotExist=true</value>
+            <description>JDBC connect string for a JDBC metastore</description>
+        </property>
+
+... 
+
+         <property>
+            <name>hive.metastore.uris</name>
+            <value>thrift://my.mapr01.fr:9083</value>
+         </property>
+
+You can distribute this file to nodes that will have hive installed using clustershell :
+
+        [root@ip-10-68-7-91 conf]# clush -a --copy /opt/mapr/hive/hive-1.2/conf/hive-site.xml
+        node4: scp: /opt/mapr/hive/hive-1.2/conf/: Is a directory
+        node3: scp: /opt/mapr/hive/hive-1.2/conf/: Is a directory
+        node5: scp: /opt/mapr/hive/hive-1.2/conf/: Is a directory
+        clush: node4: exited with exit code 1
+        clush: node3: exited with exit code 1
+        clush: node5: exited with exit code 1
+
+Node 3 to 5 don't have hive installed so cannot copy this file in this hive conf directory, no worry. :wink:
 
 -----------------------------
 ## HUE Configuration 
