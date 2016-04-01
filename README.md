@@ -41,8 +41,9 @@ Sections where host must be updated :
                 webhdfs_url=http://my.mapr01.fr:14000/webhdfs/v1
 
 
-![](https://doc3-fr.openflyers.com/doc3-fr/images/5/5e/Alert4-3-picto-warning-red.png)
+:warning:
 For the Yarn Cluster section we don't need to manage HA of the 3 RM in the cluster. MapR already manage the failover with Zookeeper. We have to mention the virtual name for the History Server 
+:warning:
 
     [[yarn_clusters]]
         [[[default]]]
@@ -89,7 +90,16 @@ For the Yarn Cluster section we don't need to manage HA of the 3 RM in the clust
 
 -----------------------------
 
-MYSQL MASTER/MASTER Configuration 
+## MYSQL MASTER/MASTER Configuration 
+
+How to configure 2 servers in a Master/Master configuration. In the HAProxy config file 
+
+
+First MySQL Server (default) | Second MySQL Server (backup)
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
 
 
 
