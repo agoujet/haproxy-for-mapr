@@ -1,28 +1,27 @@
-# haproxy-for-mapr
-Configuration to use haproxy with a MapR cluster HA 
+# How to use haproxy with a MapR cluster HA and a MySQL MASTER/MASTER configuration
 
-
+-----------------------------
+## Hostname / DNS / hosts file 
 You have to create a name in your DNS or hosts file 
 
-    *PRODUCTION CLUSTER
+    # PRODUCTION CLUSTER
         10.68.7.91  ip-10-68-7-91		node1
         10.68.7.92  ip-10-68-7-92   	node2
         10.68.7.93  ip-10-68-7-93    	node3
         10.68.7.94  ip-10-68-7-94    	node4
         10.68.7.95  ip-10-68-7-95    	node5
         
-    *LOAD BALANCER / VPN / PROXY
+    # LOAD BALANCER / VPN / PROXY
         10.68.7.31  ip-10-68-7-31    	node0
-        10.68.7.31  my.mapr01.fr		prod1
+        10.68.7.31  my.mapr01.fr		   prod1
         
-    *CLIENTS INSTANCES
-        10.68.7.240 ip-10-68-7-240      ora1
-        10.68.7.250 ip-10-68-7-250      client1
-        10.68.7.158 ip-10-68-7-158      win01
 
 You can now use the cluster my.mapr01.fr in you differen configuration files in the MapR Cluster.
 Don't forget to replicate your configurations files in the different nodes running the sames services.
 We can use cluster shell to replicate files in the cluster. 
+
+-----------------------------
+## HUE Configuration 
 
 To configure Hue you have to update this file : /opt/mapr/hue/hue-3.9.0/desktop/conf/hue.ini
 
@@ -33,7 +32,7 @@ Sections where host must be updated :
         ######## host=ip-10-68-7-91
         host=my.mapr01.fr
         port=3306
-.
+
     [hadoop]
         [[hdfs_clusters]]
             [[[default]]]
@@ -41,9 +40,8 @@ Sections where host must be updated :
                 webhdfs_url=http://my.mapr01.fr:14000/webhdfs/v1
 
 
-
-#### For the Yarn Cluster section we don't need to manage HA of the 3 RM in the cluster. MapR already 
-#### manage the failover with Zookeeper. We have to mention the virtual name for the History Server 
+###### For the Yarn Cluster section we don't need to manage HA of the 3 RM in the cluster. MapR already 
+###### manage the failover with Zookeeper. We have to mention the virtual name for the History Server 
 
     [[yarn_clusters]]
         [[[default]]]
