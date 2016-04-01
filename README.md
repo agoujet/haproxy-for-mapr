@@ -1,6 +1,7 @@
 # How to use haproxy with a MapR cluster HA and a MySQL MASTER/MASTER configuration
 
 -----------------------------
+-----------------------------
 ## Hostname / DNS / hosts file 
 You have to create a name in your DNS or hosts file 
 
@@ -52,7 +53,7 @@ For the Yarn Cluster section we don't need to manage HA of the 3 RM in the clust
             security_enabled=${security_enabled}
             mechanism=${mechanism}
 
-             # URL of the HistoryServer API
+            # URL of the HistoryServer API
             ######### history_server_api_url=http://ip-10-68-7-91:19888
             history_server_api_url=http://my.mapr01.fr:19888
 
