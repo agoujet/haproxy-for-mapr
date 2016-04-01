@@ -109,8 +109,7 @@ Configuration to made in the two servers :
             First MySQL Server (default) | Second MySQL Server (backup)
             ------------ | -------------
             /etc/my.cnf :       | /etc/my.cnf :
-                    | Content in the second column
-
+                    | Content in the second colum
             [mysqld]   |
             datadir=/var/lib/mysql   |
             socket=/var/lib/mysql/mysql.sock   |
