@@ -50,6 +50,10 @@ You can distribute this file to nodes that will have hive installed using cluste
 
 Nodes 3 to 5 don't have hive installed so cannot copy this file in this hive conf directory, no worry. :wink:
 
+:warning:  If you have also Spark installed on your cluster don't forget to copy hive-site.xml also in the Spark conf folder.
+
+        cp /opt/mapr/hive/hive-1.2/conf/hive-site.xml /opt/mapr/spark/spark-1.5.2/conf
+
 -----------------------------
 ## HUE Configuration 
 
