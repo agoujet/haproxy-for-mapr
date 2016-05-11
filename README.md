@@ -141,15 +141,15 @@ Nodes 3 to 5 don't have hive installed so cannot copy this file in this hive con
 ## Config update for the Job History server 
 
 Update the file /opt/mapr/hadoop/hadoop-2.7.0/etc/hadoop/mapred-site.xml 
-By default you should have a node name, just change it by localhost. There is a rule in HAproxy to get the UI on port 19888 in HA. 
+Change localhost by the HAProxy host name. There is a rule in HAproxy to get the UI on port 19888 in HA. 
 
           <property>
             <name>mapreduce.jobhistory.address</name>
-            <value>localhost:10020</value>
+            <value>my.mapr01.fr:10020</value>
           </property>
           <property>
             <name>mapreduce.jobhistory.webapp.address</name>
-            <value>localhost:19888</value>
+            <value>my.mapr01.fr:19888</value>
           </property>
 
 -----------------------------
